@@ -1,0 +1,25 @@
+DROP TABLE IF EXISTS users;
+
+DROP TABLE IF EXISTS chatrooms;
+
+DROP TABLE IF EXISTS messages;
+
+CREATE TABLE IF NOT EXISTS users(
+     id BIGSERIAL PRIMARY KEY UNIQUE,
+     name VARCHAR(255),
+     password VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS messages (
+     id BIGSERIAL PRIMARY KEY UNIQUE,
+     author_id INTEGER,
+     chatroom_id  INTEGER,
+     text TEXT,
+     date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS chatrooms (
+    id       SERIAL PRIMARY KEY UNIQUE,
+    name     VARCHAR,
+    owner_id INTEGER
+);
